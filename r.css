@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.postcard {
+    perspective: 1000px;
+}
+
+.card {
+    width: 350px; /* Blog card size */
+    height: 250px; /* Blog card size */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    cursor: pointer;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+    background: linear-gradient(45deg, yellow, orange, red);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: url(https://static.vecteezy.com/system/resources/previews/009/873/303/non_2x/illustration-of-rakhi-raksha-bandhan-indian-festival-background-banner-poster-decorative-celebration-vector.jpg) no-repeat center center;
+    background-size: cover;
+    color: black;
+    opacity: 0.9; /* Slightly fade the background image */
+}
+
+.card-back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Add a dark overlay for further fading */
+    border-radius: 10px;
+}
+
+.card-back .message {
+    position: relative;
+    z-index: 1;
+}
+
+.card-back .message h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-back .message p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
